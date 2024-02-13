@@ -1,18 +1,4 @@
-CREATE TABLE brand (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(255)
-);
-
-INSERT INTO brand (id, name) VALUES (1, 'Sara');
-
-CREATE TABLE product (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(255)
-);
-
-INSERT INTO product (id, name) VALUES (35455, 'Product X');
-
-CREATE TABLE price (
+CREATE TABLE IF NOT EXISTS price (
     id INT PRIMARY KEY AUTO_INCREMENT,
     brand_id INT,
     start_date TIMESTAMP,
