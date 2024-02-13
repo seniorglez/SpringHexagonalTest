@@ -20,8 +20,6 @@ public class PriceControllerEndToEndTest {
     @Autowired
     private MockMvc mockMvc;
 
-    // MANDATORY TEST
-
     @ParameterizedTest
     @CsvSource({
             "2020-06-14 10:00:00, 35455, 1, 35.5",
@@ -39,8 +37,6 @@ public class PriceControllerEndToEndTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.amount").value(expectedPrice));
     }
-
-    //TEST I WANTED TO INCLUDE
 
     @Test
     public void whenResourceNotFound_thenNotFound() throws Exception {
