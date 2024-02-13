@@ -38,3 +38,41 @@ mvn test
 ```
 
 This command executes all tests in the application and provides a summary of the test results.
+
+## Example of Use
+
+This section provides a practical example of how to use the API to retrieve pricing information. This example demonstrates making a request to the /price endpoint to get the price of a product for a specific brand at a given time.
+
+To fetch the price of a product, perform a GET request to the /price endpoint with the following parameters:
+
+  - applicationDate: The date and time when the price is applicable, in ISO 8601 format (YYYY-MM-DDTHH:MM:SS).
+  - productId: The ID of the product for which you're seeking the price.
+  - brandId: The ID of the brand associated with the product.
+
+Example using curl:
+
+```bash
+curl -X GET "http://localhost:8080/price?applicationDate=2020-06-14T10:00:00&productId=35455&brandId=1" -H "Accept: application/json"
+```
+
+A successful response will return a JSON object containing the price details for the requested product, brand, and application date. Here is an example of a successful response:
+
+```json
+{
+  "brandId": 1,
+  "startDate": "2020-06-14T00:00:00",
+  "endDate": "2020-12-31T23:59:59",
+  "priceList": 1,
+  "productId": 35455,
+  "amount": 35.5
+}
+```
+
+If the request fails due to missing parameters, incorrect values, or server errors, the API will return an appropriate HTTP status code and JSON object containig a descriptive error message to help diagnose the problem. Here is an example of an error response:
+
+```json
+{
+  "message":"The provided argument is not of the expected type.",
+  "code":400
+}
+```
